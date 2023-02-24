@@ -1,8 +1,9 @@
 import React from "react";
+import Calculator from "./views/calculator/Calculator";
 
 const App = () => (
   <>
-    <h1>testt</h1>
+    <Calculator />
   </>
 );
 
