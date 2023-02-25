@@ -29,9 +29,14 @@
   background-color: #f0f0f0;
   font-size: 3.6rem;
   height: 80px;
-  padding: 0 2rem;
+  padding: 1rem 2rem;
   border-radius: 1rem 1rem 0 0;
   border-bottom: 1px solid #878787;
+  overflow-x: auto;
+}
+
+.resultValue {
+  overflow-x: auto;
 }
 
 .calcButtons {
