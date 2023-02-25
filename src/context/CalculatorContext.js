@@ -6,11 +6,11 @@ const CalculatorContextProvider = ({ children }) => {
   const [calculationHistory, setCalculationHistory] = useState([]);
 
   const handleCalculation = (calculation) => {
-    setCalculationHistory((prevHistory) => [...prevHistory, calculation]);
+    setCalculationHistory((prevCalc) => [...prevCalc, calculation]);
   };
 
   const handleCalculationSelect = (index) => {
-    setCalculationHistory((prevHistory) => prevHistory.slice(0, index + 1));
+    setCalculationHistory((prevCalc) => prevCalc.slice(0, index + 1));
   };
   console.log(calculationHistory);
   return (
