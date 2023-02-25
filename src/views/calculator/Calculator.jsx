@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styles from "./Calculator.module.css";
+import { CalculatorContext } from "../../context/CalculatorContext";
 
 const Calculator = () => {
   const [displayValue, setDisplayValue] = useState("0");
   const [operator, setOperator] = useState("");
   const [storedValue, setStoredValue] = useState("");
+
+  const { handleCalculation } = useContext(CalculatorContext);
 
   const executeCalculation = (num1, num2, operator) => {
     switch (operator) {
@@ -67,6 +70,7 @@ const Calculator = () => {
         setDisplayValue(result.toFixed(1));
         setOperator("");
         setStoredValue("");
+        handleCalculation(`${num1} ${operator} ${num2} = ${result}`);
         break;
       default:
         break;

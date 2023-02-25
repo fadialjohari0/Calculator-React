@@ -1,9 +1,8 @@
 import React from "react";
-import Calculator from "./views/calculator/Calculator";
-
+import MainLayout from "./layouts/MainLayout";
 const App = () => (
   <>
-    <Calculator />
+    <MainLayout />
   </>
 );
 
