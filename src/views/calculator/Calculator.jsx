@@ -7,8 +7,12 @@ const Calculator = () => {
   const [operator, setOperator] = useState("");
   const [storedValue, setStoredValue] = useState("");
 
-  const { handleCalculation, selectedHistory, isHistorySelected } =
-    useContext(CalculatorContext);
+  const {
+    handleCalculation,
+    selectedHistory,
+    setIsHistorySelected,
+    isHistorySelected,
+  } = useContext(CalculatorContext);
   const executeCalculation = (num1, num2, operator) => {
     switch (operator) {
       case "+":
@@ -70,7 +74,19 @@ const Calculator = () => {
         setDisplayValue(result.toFixed(1));
         setOperator("");
         setStoredValue("");
-        handleCalculation(`${num1} ${operator} ${num2} = ${result.toFixed(1)}`);
+        if (isHistorySelected) {
+          num1 = parseFloat(selectedHistory);
+          result = executeCalculation(num1, num2, operator);
+          handleCalculation(
+            `${num1} ${operator} ${num2} = ${result.toFixed(1)}`
+          );
+          setIsHistorySelected(false);
+          setDisplayValue(result.toFixed(1));
+        } else {
+          handleCalculation(
+            `${num1} ${operator} ${num2} = ${result.toFixed(1)}`
+          );
+        }
 
         break;
       default:

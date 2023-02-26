@@ -8,27 +8,37 @@ const History = () => {
     handleCalculationSelect,
     setSelectedHistory,
     setIsHistorySelected,
+    setIsClear,
   } = useContext(CalculatorContext);
 
-  const handleClick = (result, index) => {
+  const handleHistoryClick = (result, index) => {
     handleCalculationSelect(index);
     setSelectedHistory(result.substring(result.indexOf("=") + 1));
     setIsHistorySelected(true);
   };
-
+  const teste = () => {
+    setIsClear(true);
+  };
   return (
     <div className={styles.historyContainer}>
-      {calculationHistory.map((result, index) => (
-        <p
-          key={index}
-          className={styles.historyResult}
-          onClick={() => {
-            handleClick(result, index);
-          }}
-        >
-          {result}
-        </p>
-      ))}
+      <div>
+        {calculationHistory.map((result, index) => (
+          <p
+            key={index}
+            className={styles.historyResult}
+            onClick={() => {
+              handleHistoryClick(result, index);
+            }}
+          >
+            {result}
+          </p>
+        ))}
+      </div>
+      <div>
+        <button className={styles.clearHistoryBtn} onClick={teste}>
+          Clear All
+        </button>
+      </div>
     </div>
   );
 };

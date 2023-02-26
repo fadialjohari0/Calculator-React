@@ -6,6 +6,7 @@ const CalculatorContextProvider = ({ children }) => {
   const [calculationHistory, setCalculationHistory] = useState([]);
   const [selectedHistory, setSelectedHistory] = useState(null);
   const [isHistorySelected, setIsHistorySelected] = useState(false);
+  const [isClear, setIsClear] = useState(false);
 
   const handleCalculation = (calculation) => {
     setCalculationHistory((prevCalc) => [...prevCalc, calculation]);
@@ -14,6 +15,10 @@ const CalculatorContextProvider = ({ children }) => {
   const handleCalculationSelect = (index) => {
     setCalculationHistory((prevCalc) => prevCalc.slice(0, index + 1));
   };
+  if (isClear) {
+    setCalculationHistory([]);
+    setIsClear(false);
+  }
   return (
     <CalculatorContext.Provider
       value={{
@@ -24,6 +29,8 @@ const CalculatorContextProvider = ({ children }) => {
         setSelectedHistory,
         setIsHistorySelected,
         isHistorySelected,
+        setIsClear,
+        isClear,
       }}
     >
       {children}
