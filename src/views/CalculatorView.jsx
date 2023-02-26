@@ -2,14 +2,16 @@ import React from "react";
 import Calculator from "./calculator/Calculator";
 import History from "./history/History";
 import CalculatorContextProvider from "../context/CalculatorContext";
+import styles from "./CalculatorView.module.css";
+
 const CalculatorView = () => {
   return (
-    <div>
+    <main className={styles.main}>
       <CalculatorContextProvider>
-        <Calculator />
         <History />
+        <Calculator />
       </CalculatorContextProvider>
-    </div>
+    </main>
   );
 };
 

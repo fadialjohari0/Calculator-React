@@ -1,0 +1,19 @@
+.historyContainer {
+  width: 20rem;
+  height: 46rem;
+  background-color: #f0f0f0;
+  font-size: 0.8rem;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px #ccc;
+  overflow-y: scroll;
+}
+.historyResult {
+  text-align: left;
+  background-color: #f0f0f0;
+  font-size: 1.2rem;
+  padding: 1rem;
+  border-radius: 1rem 1rem 0 0;
+  border-bottom: 1px solid #878787;
+  cursor: pointer;
+}

@@ -7,8 +7,8 @@ const Calculator = () => {
   const [operator, setOperator] = useState("");
   const [storedValue, setStoredValue] = useState("");
 
-  const { handleCalculation } = useContext(CalculatorContext);
-
+  const { handleCalculation, selectedHistory, isHistorySelected } =
+    useContext(CalculatorContext);
   const executeCalculation = (num1, num2, operator) => {
     switch (operator) {
       case "+":
@@ -70,7 +70,8 @@ const Calculator = () => {
         setDisplayValue(result.toFixed(1));
         setOperator("");
         setStoredValue("");
-        handleCalculation(`${num1} ${operator} ${num2} = ${result}`);
+        handleCalculation(`${num1} ${operator} ${num2} = ${result.toFixed(1)}`);
+
         break;
       default:
         break;
@@ -78,76 +79,73 @@ const Calculator = () => {
   };
 
   return (
-    <div className="calculator">
-      <div className={styles.calculator}>
-        <div className={styles.result}>
-          <p className={styles.resultValue}>{displayValue}</p>
-        </div>
-        <div className={styles.calcButtons}>
-          <button className={styles.operator} onClick={() => handleClick("C")}>
-            C
-          </button>
-          <button
-            className={styles.operator}
-            onClick={() => handleClick("+/-")}
-          >
-            +/-
-          </button>
-          <button className={styles.operator} onClick={() => handleClick("%")}>
-            %
-          </button>
-          <button className={styles.operator} onClick={() => handleClick("/")}>
-            /
-          </button>
-          <button className={styles.number} onClick={() => handleClick("7")}>
-            7
-          </button>
-          <button className={styles.number} onClick={() => handleClick("8")}>
-            8
-          </button>
-          <button className={styles.number} onClick={() => handleClick("9")}>
-            9
-          </button>
-          <button className={styles.operator} onClick={() => handleClick("*")}>
-            x
-          </button>
-          <button className={styles.number} onClick={() => handleClick("4")}>
-            4
-          </button>
-          <button className={styles.number} onClick={() => handleClick("5")}>
-            5
-          </button>
-          <button className={styles.number} onClick={() => handleClick("6")}>
-            6
-          </button>
-          <button className={styles.operator} onClick={() => handleClick("-")}>
-            -
-          </button>
-          <button className={styles.number} onClick={() => handleClick("1")}>
-            1
-          </button>
-          <button className={styles.number} onClick={() => handleClick("2")}>
-            2
-          </button>
-          <button className={styles.number} onClick={() => handleClick("3")}>
-            3
-          </button>
-          <button className={styles.operator} onClick={() => handleClick("+")}>
-            +
-          </button>
-          <button
-            className={`${styles.number} ${styles.zeroNumber}`}
-            onClick={() => handleClick("0")}
-          >
-            0
-          </button>
-          <button className={styles.operator} onClick={() => handleClick(".")}>
-            .
-          </button>
-          <button className={styles.operator} onClick={() => handleClick("=")}>
-            =
-          </button>
-        </div>
+    <div className={styles.calculator}>
+      <div className={styles.result}>
+        <p className={styles.resultValue}>
+          {isHistorySelected ? selectedHistory : displayValue}
+        </p>
+      </div>
+      <div className={styles.calcButtons}>
+        <button className={styles.operator} onClick={() => handleClick("C")}>
+          C
+        </button>
+        <button className={styles.operator} onClick={() => handleClick("+/-")}>
+          +/-
+        </button>
+        <button className={styles.operator} onClick={() => handleClick("%")}>
+          %
+        </button>
+        <button className={styles.operator} onClick={() => handleClick("/")}>
+          /
+        </button>
+        <button className={styles.number} onClick={() => handleClick("7")}>
+          7
+        </button>
+        <button className={styles.number} onClick={() => handleClick("8")}>
+          8
+        </button>
+        <button className={styles.number} onClick={() => handleClick("9")}>
+          9
+        </button>
+        <button className={styles.operator} onClick={() => handleClick("*")}>
+          x
+        </button>
+        <button className={styles.number} onClick={() => handleClick("4")}>
+          4
+        </button>
+        <button className={styles.number} onClick={() => handleClick("5")}>
+          5
+        </button>
+        <button className={styles.number} onClick={() => handleClick("6")}>
+          6
+        </button>
+        <button className={styles.operator} onClick={() => handleClick("-")}>
+          -
+        </button>
+        <button className={styles.number} onClick={() => handleClick("1")}>
+          1
+        </button>
+        <button className={styles.number} onClick={() => handleClick("2")}>
+          2
+        </button>
+        <button className={styles.number} onClick={() => handleClick("3")}>
+          3
+        </button>
+        <button className={styles.operator} onClick={() => handleClick("+")}>
+          +
+        </button>
+        <button
+          className={`${styles.number} ${styles.zeroNumber}`}
+          onClick={() => handleClick("0")}
+        >
+          0
+        </button>
+        <button className={styles.operator} onClick={() => handleClick(".")}>
+          .
+        </button>
+        <button className={styles.operator} onClick={() => handleClick("=")}>
+          =
+        </button>
       </div>
     </div>
   );

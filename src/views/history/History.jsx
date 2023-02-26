@@ -3,23 +3,31 @@ import styles from "./History.module.css";
 import { CalculatorContext } from "../../context/CalculatorContext";
 
 const History = () => {
-  const { calculationHistory, handleCalculationSelect } =
-    useContext(CalculatorContext);
+  const {
+    calculationHistory,
+    handleCalculationSelect,
+    setSelectedHistory,
+    setIsHistorySelected,
+  } = useContext(CalculatorContext);
 
-  const handleClick = (index) => {
+  const handleClick = (result, index) => {
     handleCalculationSelect(index);
+    setSelectedHistory(result.substring(result.indexOf("=") + 1));
+    setIsHistorySelected(true);
   };
 
   return (
-    <div className={styles.history}>
+    <div className={styles.historyContainer}>
       {calculationHistory.map((result, index) => (
-        <h1
+        <p
           key={index}
-          className={styles.result}
-          onClick={() => handleClick(index)}
+          className={styles.historyResult}
+          onClick={() => {
+            handleClick(result, index);
+          }}
         >
           {result}
-        </h1>
+        </p>
       ))}
     </div>
   );
