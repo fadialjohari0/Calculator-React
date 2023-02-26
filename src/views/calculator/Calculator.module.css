@@ -7,7 +7,7 @@
   max-width: 350px;
   width: 300px;
   border-radius: 10px;
-  box-shadow: 0px 0px 10px #ccc;
+  box-shadow: 2px 5px 5px #0000006f;
 }
 
 .result {
@@ -46,18 +46,20 @@
 .operator {
   font-size: 2.2rem;
   height: 6rem;
-  border: 1px solid #ccc;
   border-radius: 50%;
+  border: 1px solid rgb(81, 161, 242);
   cursor: pointer;
 }
 
 .operator {
-  background-color: #49d120;
+  background-color: #7b7b7b;
+  box-shadow: 0 0 3px rgb(30, 88, 145);
   color: #fff;
 }
 
 .number {
-  background-color: #fff;
+  background-color: #e4e4e4;
+  color: #000;
 }
 
 .zeroNumber {
@@ -66,6 +68,13 @@
   text-align: left;
   padding-left: 2rem;
 }
+
 button:active {
   transform: scale(0.97);
+}
+
+.errorMessage {
+  font-size: 1.2rem;
+  color: red;
+  margin-right: auto;
 }
