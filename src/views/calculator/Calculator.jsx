@@ -5,6 +5,7 @@ import { CalculatorContext } from "../../context/CalculatorContext";
 import CalculatorButtons from "./CalculatorButtons";
 
 import styles from "./Calculator.module.css";
+
 const Calculator = () => {
   const [displayValue, setDisplayValue] = useState("0");
   const [operator, setOperator] = useState("");
@@ -136,6 +137,7 @@ const Calculator = () => {
         {buttons.map((button) => (
           <CalculatorButtons
             value={button.value}
+            key={button.value}
             className={button.className}
             onClick={button.onClick}
           />
